@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foundations of Web App Pentesting — Field Checklist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-code">FWAP // 06–13</span>
+        <h1 class="brand-title">Foundations of Web App Pentesting</h1>
+        <span class="brand-sub">Field Testing Checklist</span>
+      </div>
+
+      <div class="topbar-controls">
+        <div class="target-box" title="Updates {{TARGET_URL}} and {{TARGET_HOST}} in all command snippets">
+          <label for="target-input">Target</label>
+          <input id="target-input" type="text" value="http://target.local" spellcheck="false" autocomplete="off" />
+        </div>
+
+        <div class="segmented" role="group" aria-label="Checklist Mode">
+          <button type="button" data-view-mode="pentest" class="active" title="Consolidated actionable pentesting checks across sections 6.0–13.0">
+            Pentest Checks (31)
+          </button>
+          <button type="button" data-view-mode="syllabus" title="Every individual course syllabus item 6.1–13.10 including Labs, Challenges, Demos, and Quizzes">
+            Full Syllabus (81)
+          </button>
+        </div>
+
+        <button type="button" id="theme-toggle" class="btn">Theme: Paper</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="workbench">
+    <aside class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-heading">
+          <span>Completion</span>
+          <span id="progress-pct" class="progress-pct">0%</span>
+        </div>
+        <div class="progress-numbers">
+          <span id="progress-ratio">0 / 30</span>
+        </div>
+        <div class="meter">
+          <div id="progress-fill" class="meter-fill"></div>
+        </div>
+        <div class="status-summary">
+          <span><span class="status-dot" style="background:var(--border-strong)"></span><span id="stat-remaining">30 remaining</span></span>
+          <span><span class="status-dot" style="background:var(--flag)"></span><span id="stat-flagged">0 flagged</span></span>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-heading">
+          <span>Modules (6.0 – 13.0)</span>
+        </div>
+        <ul id="sidebar-nav" class="nav-list"></ul>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-heading">
+          <span>Session Data</span>
+        </div>
+        <div class="sidebar-actions">
+          <button type="button" id="export-btn" class="btn" title="Export progress and notes as a Markdown report">Export .md</button>
+          <button type="button" id="reset-btn" class="btn" title="Clear all checkboxes, flags, and notes">Reset All</button>
+        </div>
+      </div>
+    </aside>
+
+    <section class="content-area">
+      <div class="toolbar">
+        <div class="search-wrap">
+          <span class="search-prefix">FILTER //</span>
+          <input
+            id="search-input"
+            type="search"
+            placeholder="Search by technique, section (e.g. 10.6), tool (ffuf, sqlmap), or payload..."
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="toolbar-right">
+          <div class="segmented" role="group" aria-label="Filter by Status">
+            <button type="button" data-status-filter="all" class="active">All</button>
+            <button type="button" data-status-filter="todo">Unchecked</button>
+            <button type="button" data-status-filter="done">Done</button>
+            <button type="button" data-status-filter="flagged">Flagged</button>
+          </div>
+          <button type="button" id="expand-all-btn" class="btn">Expand / Collapse All</button>
+        </div>
+      </div>
+
+      <div id="checklist-container"></div>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
